@@ -9,7 +9,7 @@ const App = () => {
       <header className="App-header">
         <VFXProvider>
           {customShader && (
-            <VFXDiv style={{width:300, height: 300, backgroundColor: "white"}} shader={customShader} />
+            <VFXDiv style={{width: 1000, height: 1000, backgroundColor: "white"}} shader={customShader} />
           )}
         </VFXProvider>
       </header>

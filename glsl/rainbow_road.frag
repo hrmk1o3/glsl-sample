@@ -40,11 +40,7 @@ vec3 color_mapping(float r) {
     return hsv(fract(r + .1), .8, 1.);
 }
 
-float cross_section(float s, vec2 st) {
-    return rect(.5-s, .5-s, .5+s, .5+s, st);
-}
-
-const float SPEED = -3.;
+const float SPEED = -2.;
 const float WIDTH = 0.1;
 const float KIND = 7.;
 
@@ -62,8 +58,8 @@ void main(){
         vec3 color = color_mapping((floor(d) - float(i))/KIND);
         vec3 mask = vec3(1.);
         // mask *= rect(s1, 0., s2, 1., st);
-        mask *= cross_section(s2, st);
-        mask *= 1. - cross_section(s1, st);
+        mask *= rect(.5-s2, .5-s2, .5+s2, .5+s2, st);
+        mask *= 1. - rect(.5-s1, .5-s1, .5+s1, .5+s1, st);
         pct += mask * color;
     }
 
